@@ -1,5 +1,6 @@
-import { program } from "commander";
-const contacts = require("./db/contacts.json");
+
+const { program } = require('commander');
+
 const {
   listContacts,
   getContactById,
@@ -22,25 +23,25 @@ const options = program.opts();
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      const allContacts = await contacts.listContacts();
+      const allContacts = await listContacts();
       console.log(allContacts);
       break;
 
     case "get":
       // ... id
-      const oneContact = await contacts.getContactById(id);
+      const oneContact = await getContactById(id);
       console.log(oneContact);
       break;
 
     case "add":
       // ... name email phone
-      const newContact = await contacts.addContact(name, email, phone);
+      const newContact = await addContact(name, email, phone);
       console.log(newContact);
       break;
 
     case "remove":
       // ... id
-      const deleteContact = await contacts.removeContact(id);
+      const deleteContact = await removeContact(id);
       console.log(deleteContact);
       break;
 

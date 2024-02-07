@@ -1,10 +1,10 @@
 const fs = require("fs/promises");
 const path = require("path");
-const nanoid = require("nanoid");
+const { nanoid } = require("nanoid");
 
 
  
-const contactsPath = path.join(__dirname, "contacts.json");
+const contactsPath = path.join(__dirname,"db", "contacts.json");
  
 
 async function listContacts() {
@@ -17,8 +17,8 @@ async function listContacts() {
 async function getContactById(contactId) {
   // ...твій код. Повертає об'єкт контакту з таким id. Повертає null, якщо контакт з таким id не знайдений.
   const contacts = await listContacts();
-  const result = contacts.fing(item => item.id === contactId);
-  return result || null;
+  const result = contacts.findIndex(item => item.id === contactId);
+  return contacts[result] || null;
 }
 
 async function removeContact(contactId) {
