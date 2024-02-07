@@ -1,6 +1,7 @@
 
 const { program } = require('commander');
 
+
 const {
   listContacts,
   getContactById,
@@ -18,6 +19,7 @@ program
 program.parse();
 
 const options = program.opts();
+
 
 // TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
@@ -50,9 +52,5 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-// invokeAction({ action: "list" });
-// invokeAction({ action: "get", id: "e6ywwRe4jcqxXfCZOj_1e" });
-// invokeAction({ action: "add", name: "Valery Key", email: "valery@gmail.com", phone: "123-456-78" });
-// invokeAction({ action: "remove", id: "rsKkOQUi80UsgVPCcLZZW" });
 
 invokeAction(options);
